@@ -32,6 +32,8 @@ describe('General advisor', () => {
         high: 10
       })).to.eql({
         isPositive: true,
+        takeProfitAt: 20,
+        stopLossAt: -6.666666666666667,
         indicatorName: 'hangman'
       });
     });

@@ -3,12 +3,19 @@ const ws = require('./ws.binance');
 
 const handleNewTick = ({ symbol, advisor }) => ({ open, close, low, high, isFinal }) => {
   if (isFinal) {
-    const { isPositive, indicatorName } =  advisor.check({ open, close, low, high });
+    const {
+      isPositive,
+      takeProfitAt,
+      stopLossAt,
+      indicatorName
+    } =  advisor.check({ open, close, low, high });
 
     if (isPositive) {
       notification.notify({
         exchangeName: 'binance',
         symbol,
+        takeProfitAt,
+        stopLossAt,
         advisorName: advisor.name,
         indicatorName
       })
