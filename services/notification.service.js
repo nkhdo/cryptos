@@ -11,8 +11,10 @@ Stop loss at: ${roundedStopLossAt}
 Signal của ${advisorName} dùng ${indicatorName} đó <3`
   });
   console.log(`
-${new Date()}: ${symbol} is having a ${indicatorName} on ${exchangeName}
-Take profit at: ${roundedTakeProfitAt}, Stop loss at: ${roundedStopLossAt}`);
+${new Date()}
+${symbol} is having a ${indicatorName} on ${exchangeName}
+Take profit at: ${roundedTakeProfitAt}
+Stop loss at: ${roundedStopLossAt}`);
 };
 
 module.exports = {
