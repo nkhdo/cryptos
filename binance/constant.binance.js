@@ -34,7 +34,16 @@ const constant = {
     'QTUMBTC',
     'VENBTC',
     'BCCBTC',
-    'POWRBTC'
+    'POWRBTC',
+    'CNDBTC',
+    'HSRBTC',
+    'XLMBTC',
+    'ETCBTC',
+    'GTOBTC',
+    'OMGBTC',
+    'REQBTC',
+    'MANABTC',
+    'ZECBTC',
   ]
 };
 
