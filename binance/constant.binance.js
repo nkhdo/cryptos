@@ -29,7 +29,12 @@ const constant = {
     'LTCBTC',
     'XRPBTC',
     'BNBBTC',
-    'EOSBTC'
+    'EOSBTC',
+    'ICXBTC',
+    'QTUMBTC',
+    'VENBTC',
+    'BCCBTC',
+    'POWRBTC'
   ]
 };
 

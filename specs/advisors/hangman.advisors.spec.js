@@ -33,7 +33,7 @@ describe('Hangman advisor', () => {
       })).to.eql({
         isPositive: true,
         takeProfitAt: 0.00030298,
-        stopLossAt: 0.00019149,
+        stopLossAt: 0.00028898000000000004,
         indicatorName: 'hangman'
       });
     });
