@@ -13,9 +13,10 @@ const getProfitLoss = ({ low, high}) => {
   };
 };
 
-const getNegativeResult = () => ({
+const getNegativeResult = (reason) => ({
   isPositive: false,
-  indicatorName: hammer.name
+  indicatorName: hammer.name,
+  reason
 });
 
 const getPositiveResult = ({ takeProfitAt, stopLossAt }) => ({
@@ -27,8 +28,10 @@ const getPositiveResult = ({ takeProfitAt, stopLossAt }) => ({
 
 const check = async ({ open, close, low, high, getLatestClosePrices }) => {
   if (hammer.isPositive({ open, close, low, high })) {
-    // const latestClosePrices = await getLatestClosePrices();
-    // if (!ma.isDownTrend(latestClosePrices, 7)) return getNegativeResult();
+    const latestClosePrices = await getLatestClosePrices();
+    if (!ma.isDownTrend({ closePrices: latestClosePrices, period: 7 })) {
+      return getNegativeResult('rejected by MA');
+    }
 
     const { takeProfitAt, stopLossAt } = getProfitLoss({ low, high });
     return getPositiveResult({ takeProfitAt, stopLossAt });

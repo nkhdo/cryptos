@@ -1,14 +1,24 @@
 const notification = require('../services/notification.service');
 const ws = require('./ws.binance');
+const api = require('./api.binance');
 
-const handleNewTick = ({ symbol, advisor }) => async ({ open, close, low, high, isFinal }) => {
+const getLatestClosePrices = ({ symbol, interval }) => () => api.getLatestClosePrices({ symbol, interval });
+
+const handleNewTick = ({ symbol, interval, advisor }) => async ({ open, close, low, high, isFinal }) => {
   if (isFinal) {
     const {
       isPositive,
       takeProfitAt,
       stopLossAt,
-      indicatorName
-    } =  await advisor.check({ open, close, low, high });
+      indicatorName,
+      reason
+    } =  await advisor.check({
+      open,
+      close,
+      low,
+      high,
+      getLatestClosePrices: getLatestClosePrices({ symbol, interval })
+    });
 
     if (isPositive) {
       notification.notify({
@@ -20,6 +30,13 @@ const handleNewTick = ({ symbol, advisor }) => async ({ open, close, low, high, 
         indicatorName
       })
     }
+
+    if (reason) {
+      console.log(`
+${new Date()}
+${symbol} has been ${reason}
+`);
+    }
   }
 };
 
@@ -27,7 +44,7 @@ const worker = ({ interval, advisor }) => (symbol) => {
   ws.candle({
     symbol,
     interval,
-    onNewTick: handleNewTick({ symbol, advisor })
+    onNewTick: handleNewTick({ symbol, interval, advisor })
   })
 };
 

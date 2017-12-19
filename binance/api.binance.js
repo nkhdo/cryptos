@@ -1,10 +1,16 @@
 const axios = require('axios');
+const { round } = require('../utils/number.utils');
 const { API: API_CONSTANT } = require('./constant.binance');
 
 const { CANDLE_KEY } = API_CONSTANT;
 
 const parseData = (rawData) => {
-  return rawData.map(([, open, high, low, close]) => ({ open, close, high, low }))
+  return rawData.map(([, open, high, low, close]) => ({
+    open: round(open),
+    close: round(close),
+    high: round(high),
+    low: round(low)
+  }))
 };
 
 const getLatestCandles = async ({ symbol, interval }) => {
@@ -22,5 +28,6 @@ const getLatestClosePrices = async ({ symbol, interval }) => {
 };
 
 module.exports = {
-  getLatestCandles
+  getLatestCandles,
+  getLatestClosePrices
 };

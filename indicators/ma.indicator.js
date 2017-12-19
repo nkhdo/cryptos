@@ -37,7 +37,10 @@ const isDownTrend = ({ closePrices, period }) => {
   const halfPeriod = round((period / 2), 0);
   const halfPeriodIndex = exponentialMAs.length - 1 - halfPeriod;
 
-  return exponentialMAs[exponentialMAs.length - 1] < exponentialMAs[halfPeriodIndex];
+  const currentMA = exponentialMAs[exponentialMAs.length - 1];
+  const halfPeriodMA = exponentialMAs[halfPeriodIndex];
+
+  return  currentMA < halfPeriodMA;
 };
 
 module.exports = {
