@@ -20,6 +20,12 @@ const constant = {
     THIRTY_MIN: '30m'
   },
   SYMBOLS: [
+    'BTCUSDT',
+    'ETHUSDT',
+    'BCCUSDT',
+    'NEOUSDT',
+    'BNBUSDT',
+    'LTCUSDT',
     'XVGBTC',
     'ETHBTC',
     'ADABTC',
