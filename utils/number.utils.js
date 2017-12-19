@@ -1,4 +1,4 @@
-const round = (input) => Number((parseFloat(input)).toFixed(8));
+const round = (input, decimal = 8) => Number((parseFloat(input)).toFixed(decimal));
 
 module.exports = {
   round

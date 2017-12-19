@@ -13,7 +13,7 @@ Signal của ${advisorName} dùng ${indicatorName} đó <3`
   });
   console.log(`
 ${new Date()}
-${symbol} is having a ${indicatorName} on ${exchangeName}
+${symbol} is having a ${indicatorName} on ${exchangeName} according to ${advisorName}
 Take profit at: ${roundedTakeProfitAt}
 Stop loss at: ${roundedStopLossAt}`);
 };

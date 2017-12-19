@@ -1,4 +1,5 @@
 const hammer = require('../indicators/hammer.indicator');
+const ma = require('../indicators/ma.indicator');
 const { getHeight } = require('../helpers/candle.helper');
 
 const getProfitLoss = ({ low, high}) => {
@@ -12,20 +13,27 @@ const getProfitLoss = ({ low, high}) => {
   };
 };
 
-const check = ({ open, close, low, high }) => {
+const getNegativeResult = () => ({
+  isPositive: false,
+  indicatorName: hammer.name
+});
+
+const getPositiveResult = ({ takeProfitAt, stopLossAt }) => ({
+  isPositive: true,
+  takeProfitAt,
+  stopLossAt,
+  indicatorName: hammer.name
+});
+
+const check = async ({ open, close, low, high, getLatestClosePrices }) => {
   if (hammer.isPositive({ open, close, low, high })) {
+    // const latestClosePrices = await getLatestClosePrices();
+    // if (!ma.isDownTrend(latestClosePrices, 7)) return getNegativeResult();
+
     const { takeProfitAt, stopLossAt } = getProfitLoss({ low, high });
-    return {
-      isPositive: true,
-      takeProfitAt,
-      stopLossAt,
-      indicatorName: hammer.name
-    };
+    return getPositiveResult({ takeProfitAt, stopLossAt });
   } else {
-    return {
-      isPositive: false,
-      indicatorName: hammer.name
-    }
+    return getNegativeResult();
   }
 };
 

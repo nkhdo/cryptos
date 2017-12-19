@@ -1,14 +1,14 @@
 const notification = require('../services/notification.service');
 const ws = require('./ws.binance');
 
-const handleNewTick = ({ symbol, advisor }) => ({ open, close, low, high, isFinal }) => {
+const handleNewTick = ({ symbol, advisor }) => async ({ open, close, low, high, isFinal }) => {
   if (isFinal) {
     const {
       isPositive,
       takeProfitAt,
       stopLossAt,
       indicatorName
-    } =  advisor.check({ open, close, low, high });
+    } =  await advisor.check({ open, close, low, high });
 
     if (isPositive) {
       notification.notify({
