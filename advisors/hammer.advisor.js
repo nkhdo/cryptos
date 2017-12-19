@@ -1,4 +1,4 @@
-const hangman = require('../indicators/hangman.indicators');
+const hammer = require('../indicators/hammer.indicator');
 const { getHeight } = require('../helpers/candle.helper');
 
 const getProfitLoss = ({ low, high}) => {
@@ -13,24 +13,24 @@ const getProfitLoss = ({ low, high}) => {
 };
 
 const check = ({ open, close, low, high }) => {
-  if (hangman.isPositive({ open, close, low, high })) {
+  if (hammer.isPositive({ open, close, low, high })) {
     const { takeProfitAt, stopLossAt } = getProfitLoss({ low, high });
     return {
       isPositive: true,
       takeProfitAt,
       stopLossAt,
-      indicatorName: hangman.name
+      indicatorName: hammer.name
     };
   } else {
     return {
       isPositive: false,
-      indicatorName: hangman.name
+      indicatorName: hammer.name
     }
   }
 };
 
 module.exports = {
-  name: 'hangman',
+  name: 'hammerAdvisor',
   getProfitLoss,
   check
 };

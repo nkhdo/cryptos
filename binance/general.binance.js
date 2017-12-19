@@ -1,4 +1,4 @@
-const advisor = require('../advisors/general.advisors');
+const advisor = require('../advisors/general.advisor');
 const worker = require('./worker.binance');
 const constant = require('./constant.binance');
 

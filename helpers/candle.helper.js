@@ -35,11 +35,21 @@ const isMaxOpenClose = ({ open, close, high, low }) => {
   return (height / head) > 10;
 };
 
+const isMinOpenClose = ({ open, close, high, low }) => {
+  if (open === low || close === low) return true;
+
+  const height = getHeight({ high, low });
+  const foot = getFoot({ open, close, low });
+
+  return (height / foot) > 10;
+};
+
 module.exports = {
   isGreen,
   getHeight,
   getHead,
   getBody,
   getFoot,
-  isMaxOpenClose
+  isMaxOpenClose,
+  isMinOpenClose
 };

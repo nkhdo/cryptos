@@ -5,7 +5,8 @@ const {
   getHead,
   getBody,
   getFoot,
-  isMaxOpenClose
+  isMaxOpenClose,
+  isMinOpenClose
 } = require('../../helpers/candle.helper');
 
 describe('Candle helper', () => {
@@ -112,5 +113,33 @@ describe('Candle helper', () => {
         low: 0
       })).to.be.equals(true);
     })
-  })
+  });
+
+  describe('isMinOpenClose', () => {
+    it('should return true if low equal open', () => {
+      expect(isMinOpenClose({ open: 0, low: 0 })).to.be.equals(true);
+    });
+
+    it('should return true if low equal close', () => {
+      expect(isMinOpenClose({ close: 0, low: 0 })).to.be.equals(true);
+    })
+
+    it('should return false if height divided by fot is less than 10', () => {
+      expect(isMinOpenClose({
+        open: 2,
+        close: 8,
+        high: 10,
+        low: 0
+      })).to.be.equals(false);
+    })
+
+    it('should return true if height divided by fot is more than 10', () => {
+      expect(isMinOpenClose({
+        open: 0.5,
+        close: 1,
+        high: 10,
+        low: 0
+      })).to.be.equals(true);
+    })
+  });
 });
