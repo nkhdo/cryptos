@@ -1,22 +1,21 @@
-const hangman = require('../indicators/hangman.indicators');
+const hangmanIndicator = require('../indicators/hangman.indicators');
+const hangmanAdvisor = require('../advisors/hangman.advisor');
 const { getHeight } = require('../helpers/candle.helper');
+const { round } = require('../utils/number.utils');
 
 const check = ({ open, close, low, high }) => {
-  if (hangman.isPositive({ open, close, low, high })) {
-    const height = getHeight({ low, high });
-    const takeProfitAt = high + height;
-    const stopLossAt = low - height / 3 * 2;
-
+  if (hangmanIndicator.isPositive({ open, close, low, high })) {
+    const { takeProfitAt, stopLossAt } = hangmanAdvisor.getProfitLoss({ low, high });
     return {
       isPositive: true,
       takeProfitAt,
       stopLossAt,
-      indicatorName: hangman.name
+      indicatorName: hangmanIndicator.name
     };
   } else {
     return {
       isPositive: false,
-      indicatorName: hangman.name
+      indicatorName: hangmanIndicator.name
     }
   }
 };

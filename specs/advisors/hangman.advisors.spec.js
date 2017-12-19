@@ -2,12 +2,12 @@ const { expect } = require('chai');
 const {
   name,
   check
-} = require('../../advisors/general.advisors');
+} = require('../../advisors/hangman.advisor');
 
-describe('General advisor', () => {
+describe('Hangman advisor', () => {
   describe('name', () => {
-    it('should be general', () => {
-      expect(name).to.be.equals('general');
+    it('should be hangman', () => {
+      expect(name).to.be.equals('hangman');
     });
   });
 

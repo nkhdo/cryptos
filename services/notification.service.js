@@ -1,8 +1,8 @@
 const notifier = require('node-notifier');
 
 const notify = ({ exchangeName, symbol, takeProfitAt, stopLossAt, advisorName, indicatorName }) => {
-  const roundedTakeProfitAt = Number((parseFloat(`${takeProfitAt}`)).toFixed(8));
-  const roundedStopLossAt = Number((parseFloat(`${stopLossAt}`)).toFixed(8));
+  const roundedTakeProfitAt = takeProfitAt;
+  const roundedStopLossAt = roundedStopLossAt;
 
   notifier.notify({
     title: `Mua ${symbol} trên ${exchangeName} đi người ơi!!!`,
