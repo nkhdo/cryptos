@@ -5,8 +5,10 @@ const constant = {
       CANDLE: '/api/v1/klines'
     },
     CANDLE_KEY: {
+      OPEN: 1,
       HIGH: 2,
-      LOW: 3
+      LOW: 3,
+      CLOSE: 4
     }
   },
   WS: {
