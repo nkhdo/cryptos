@@ -27,7 +27,7 @@ const handleNewTick = ({ symbol, interval, advisor }) => async ({ open, close, l
 
     if (isPositive) {
       const payload = {
-        exchangeName: 'binance',
+        exchangeName: 'Binance',
         symbol,
         takeProfitAt,
         stopLossAt,
@@ -45,8 +45,8 @@ const handleNewTick = ({ symbol, interval, advisor }) => async ({ open, close, l
 
     if (reason) {
       console.log(`
-  ${new Date()}
-  ${symbol} has been ${reason}`);
+    ${new Date()}
+    ${symbol} has been ${reason}`);
     }
   }
 };

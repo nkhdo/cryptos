@@ -8,7 +8,7 @@ const notify = ({ exchangeName, symbol, takeProfitAt, stopLossAt, advisorName, i
   const roundedTakeProfitAt = round(takeProfitAt);
   const roundedStopLossAt = round(stopLossAt);
 
-  const message = `Mua *${symbol}* trên *${exchangeName}* đi người ơi!!!
+  const message = `Mua *${symbol}* trên *${exchangeName}* đi mấy anh ơi!!!
   Take profit at: _${roundedTakeProfitAt}_
   Stop loss at: _${roundedStopLossAt}_
   Signal của _${advisorName}_ dùng _${indicatorName}_ đó <3`;
