@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.17.1",
+    "dotenv-safe": "^4.0.4",
     "node-notifier": "^5.1.2",
+    "slimbot": "^0.7.9",
     "ws": "^3.3.3"
   },
   "devDependencies": {
