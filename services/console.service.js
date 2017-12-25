@@ -1,3 +1,5 @@
+const { round } = require('../utils/number.utils');
+
 const notify = ({ exchangeName, symbol, takeProfitAt, stopLossAt, advisorName, indicatorName }) => {
   const roundedTakeProfitAt = round(takeProfitAt);
   const roundedStopLossAt = round(stopLossAt);
