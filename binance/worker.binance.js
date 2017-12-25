@@ -44,7 +44,9 @@ const handleNewTick = ({ symbol, interval, advisor }) => async ({ open, close, l
     }
 
     if (reason) {
-      console.log(`${new Date()}: ${symbol} has been ${reason}`);
+      console.log(`
+  ${new Date()}
+  ${symbol} has been ${reason}`);
     }
   }
 };
